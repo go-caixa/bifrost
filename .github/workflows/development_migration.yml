@@ -3,7 +3,15 @@
 
 name: Development Migration Up
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      migrate:
+        type: choice
+        description: What kind of migration want to run
+        options:
+        - up
+        - down
 
 env:
   DB_HOST: ${{ secrets.DB_HOST_DEV }}
@@ -26,5 +34,5 @@ jobs:
     - name: Install Go sql-migrate
       run: go install github.com/rubenv/sql-migrate/...@latest
       
-    - name: Run Migrate Up
-      run: sql-migrate up -config=internal/config/dbconfig.yml -env=remote
+    - name: Run Migrations
+      run: sql-migrate ${{ github.event.inputs.migrate }} -config=internal/config/dbconfig.yml -env=remote
