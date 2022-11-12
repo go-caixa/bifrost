@@ -10,7 +10,7 @@ env:
   DB_PASSWORD: ${{ secrets.DB_PASSWORD_DEV }}
   DB_NAME: caixa
   DB_USER: caixa
-  DB_SSLMODE: disabled
+  DB_SSLMODE: disable
 
 jobs:
   migrate:
