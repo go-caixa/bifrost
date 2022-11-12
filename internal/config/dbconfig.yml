@@ -1,0 +1,11 @@
+local:
+  dialect: postgres
+  datasource: host=${DB_HOST} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
+  dir: internal/migrations
+  table: migrations
+
+remote:
+  dialect: postgres
+  datasource: host=${DB_HOST} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
+  dir: internal/migrations
+  table: migrations
