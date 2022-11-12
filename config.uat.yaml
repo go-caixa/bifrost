@@ -1,3 +1,2 @@
-debug: true
 env: local
 port: 8081
