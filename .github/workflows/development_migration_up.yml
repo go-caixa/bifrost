@@ -1,19 +1,19 @@
 # This workflow will build a golang project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
 
-name: Development Migration
+name: Development Migration Up
 
 on: workflow_dispatch
 
 env:
-  DB_HOST: 34.121.170.120
+  DB_HOST: ${{ secrets.DB_HOST_DEV }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD_DEV }}
   DB_NAME: caixa
   DB_USER: caixa
   DB_SSLMODE: disable
 
 jobs:
-  migrate:
+  migrations:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
