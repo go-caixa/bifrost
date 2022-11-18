@@ -11,9 +11,11 @@ import (
 )
 
 type Configuration struct {
-	Env      string   `mapstructure:"env"`
-	Port     int      `mapstructure:"port"`
-	Database Database `mapstructure:"database"`
+	Env        string   `mapstructure:"env"`
+	AppName    string   `mapstructure:"appName"`
+	AppVersion string   `mapstructure:"appVersion"`
+	Port       int      `mapstructure:"port"`
+	Database   Database `mapstructure:"database"`
 }
 
 type Database struct {
@@ -26,6 +28,10 @@ type Database struct {
 
 func (c Configuration) GetPort() string {
 	return fmt.Sprintf(":%d", c.Port)
+}
+
+func (c Configuration) GetAppVersion() string {
+	return fmt.Sprintf("v%s", c.AppVersion)
 }
 
 func ReadConfig(ctx context.Context, env string) *Configuration {

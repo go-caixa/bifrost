@@ -4,6 +4,6 @@ database:
   host: localhost
   port: 25431
   username: caixa
-  password: {{ key "/DATABASE/BIFROST/password" }}
+  password: {{ key "/DATABASE/bifrost/password" }}
   name: caixa
   schema: public

@@ -8,6 +8,7 @@ import (
 
 	"github.com/go-caixa/bifrost/common/logger"
 	"github.com/go-caixa/bifrost/internal/config"
+	"github.com/go-caixa/bifrost/internal/deliveries/healthz"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -30,6 +31,9 @@ func main() {
 		logger.Infof(ctx, "Gracefully shutting down...")
 		_ = app.Shutdown()
 	}()
+
+	router := app.Group("/api/v1")
+	healthz.Healthz(router.Group("/healthz"), conf, db)
 
 	if err := app.Listen(conf.GetPort()); err != nil {
 		logger.Fatalf(ctx, err, "failed starting the server at port: %s", conf.GetPort())
