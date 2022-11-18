@@ -6,6 +6,12 @@ name: Development Migration
 on:
   workflow_dispatch:
     inputs:
+      environment:
+        type: choice
+        description: Which environment you'd like to run the migrations
+        options:
+          - development
+          - production
       migrate:
         type: choice
         description: What kind of migration want to run
@@ -15,9 +21,10 @@ on:
 
 env:
   DB_HOST: ${{ secrets.DB_HOST_DEV }}
+  DB_PORT: ${{ secrets.DB_PORT_DEV }}
   DB_PASSWORD: ${{ secrets.DB_PASSWORD_DEV }}
-  DB_NAME: caixa
-  DB_USER: caixa
+  DB_NAME: bifrost
+  DB_USER: bifrost
   DB_SSLMODE: disable
 
 jobs:
@@ -35,4 +42,4 @@ jobs:
       run: go install github.com/rubenv/sql-migrate/...@latest
       
     - name: Run Migrations
-      run: sql-migrate ${{ github.event.inputs.migrate }} -config=internal/config/dbconfig.yml -env=remote
+      run: sql-migrate ${{ github.event.inputs.migrate }} -config=internal/config/dbconfig.yml -env={{ github.event.inputs.environment }}
