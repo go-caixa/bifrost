@@ -42,4 +42,4 @@ jobs:
       run: go install github.com/rubenv/sql-migrate/...@latest
       
     - name: Run Migrations
-      run: sql-migrate ${{ github.event.inputs.migrate }} -config=internal/config/dbconfig.yml -env={{ github.event.inputs.environment }}
+      run: sql-migrate ${{ github.event.inputs.migrate }} -config=internal/config/dbconfig.yml -env=${{ github.event.inputs.environment }}
