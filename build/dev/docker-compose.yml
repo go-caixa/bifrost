@@ -4,10 +4,9 @@ services:
     image: postgres:12
     container_name: bifrostdb
     environment:
-      # RVrm46PkR3ab4F8tT9XfFAdU9CXjJcyD
-      - POSTGRES_PASSWORD=QaCBG@NAet^7uANRzDD+y!Zbyy6rWJaE
-      - POSTGRES_USER=caixa
-      - POSTGRES_DB=caixa
+      - POSTGRES_PASSWORD=<password>
+      - POSTGRES_USER=<user>
+      - POSTGRES_DB=bifrost
     ports:
       - 25431:5432
     volumes:
