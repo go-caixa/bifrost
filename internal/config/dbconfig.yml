@@ -6,12 +6,12 @@ local:
 
 development:
   dialect: postgres
-  datasource: host=${DB_HOST} port=${PORT} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
+  datasource: host=${DB_HOST} port=${DB_PORT} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
   dir: internal/migrations
   table: migrations
 
 production:
   dialect: postgres
-  datasource: host=${DB_HOST} port=${PORT} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
+  datasource: host=${DB_HOST} port=${DB_PORT} dbname=${DB_NAME} user=${DB_USER} password=${DB_PASSWORD} sslmode=${DB_SSLMODE}
   dir: internal/migrations
   table: migrations
