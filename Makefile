@@ -3,6 +3,9 @@
 run:
 	go run cmd/main.go --env=local
 
+test:
+	go test -v ./...
+
 migrate-create:
 	@read -p  "Migration name (eg:create_users, alter_entities, ...): " NAME; \
 	sql-migrate new -config=internal/config/dbconfig.yml -env=local $$NAME
